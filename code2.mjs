@@ -177,17 +177,7 @@ app.get('/', (req, res) => {
   });
 });
 
-// For Vercel, export the app as a serverless function
-export default app;
-
-// Only listen on port for local development
-if (process.env.NODE_ENV !== 'production') {
-  const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => {
-    console.log("✅ Server running on http://localhost:" + PORT);
-    console.log("📋 Available endpoints:");
-    console.log("  POST /generate-video - Generate video from text prompt");
-    console.log("  POST /generate-video-from-image - Generate image first, then video");
-    console.log("  POST /generate-video-from-uploaded-image - Generate video from uploaded image");
-  });
+// For Vercel serverless functions, we need to export a handler function
+export default async function handler(req, res) {
+  return app(req, res);
 }

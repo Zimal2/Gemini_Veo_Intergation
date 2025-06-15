@@ -1,12 +1,15 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "code2.mjs",
-      "use": "@vercel/node"
+  "functions": {
+    "code2.mjs": {
+      "runtime": "@vercel/node"
     }
-  ],
+  },
   "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/code2.mjs"
+    },
     {
       "src": "/(.*)",
       "dest": "/code2.mjs"
