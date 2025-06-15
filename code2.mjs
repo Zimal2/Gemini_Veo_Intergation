@@ -177,7 +177,5 @@ app.get('/', (req, res) => {
   });
 });
 
-// For Vercel serverless functions, we need to export a handler function
-export default async function handler(req, res) {
-  return app(req, res);
-}
+// For Vercel, export the app as default
+export default app;
